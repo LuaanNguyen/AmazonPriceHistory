@@ -4,10 +4,17 @@ from queue import Queue
 import requests
 import json
 from utils.format_tokens import *
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+opeai_api_key = os.getenv("OPENAI_API_KEY")
 
 openai_keys = [
-    # FILL HERE
+    opeai_api_key
 ]
+
 api_base_url = "https://api.openai.com/v1"
 
 class API:
@@ -77,7 +84,7 @@ class API:
 
 class vllmAPI:
     def __init__(self,temperature = 0.0) -> None:
-        self.api_url = "http://sg005:8000/generate" # http://sg019:8000/generate if use 2 different terminals
+        self.api_url = "http://scg005:8000/generate" # http://sg019:8000/generate if use 2 different terminals
         self.t = temperature
 
     def post_http_request(self, prompt: str,
@@ -89,7 +96,7 @@ class vllmAPI:
         pload = {
             "prompt": prompt,
             "n": 1,
-            "use_beam_search": False,
+            # "use_beam_search": False, # vLLM no longer accepts this parameter
             "stop": ["<|im_end|>","</s>","[/INST]","<|user|>","<|assistant|>","<reserved_106>","<reserved_107>"],
             "temperature": t,
             "max_tokens": tokens,

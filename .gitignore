@@ -3,3 +3,4 @@ __pycache__
 eval_result/*
 *.pdf
 .vscode/
+.env
