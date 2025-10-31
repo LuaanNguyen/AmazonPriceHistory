@@ -1,5 +1,7 @@
 This is the official repository of our paper [Measuring Bargaining Abilities of LLMs: A Benchmark and A Buyer-Enhancement Method](https://arxiv.org/abs/2402.15813).
 
+Refer to documentation at [DOCUMENTATION.md](/DOCUMENTATION.md)
+
 # Abstract
 Bargaining is an important and unique part of negotiation between humans. As LLM-driven agents learn to negotiate and act like real humans, how to evaluate agents' bargaining abilities remains an open problem.
 

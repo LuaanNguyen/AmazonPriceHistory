@@ -77,7 +77,7 @@ class API:
 
 class vllmAPI:
     def __init__(self,temperature = 0.0) -> None:
-        self.api_url = "http://localhost:8000/generate"
+        self.api_url = "http://sg005:8000/generate" # http://sg019:8000/generate if use 2 different terminals
         self.t = temperature
 
     def post_http_request(self, prompt: str,
