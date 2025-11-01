@@ -60,7 +60,7 @@ source start_vllm_server.sh mistralai/Mistral-7B-Instruct-v0.2 1
 ```
 This starts the server on port `:8000` (default). 
 
-### 7. Run the benchmark
+### 7. Run the benchmark (Different Terminal)
 
 The repo provides 2 shell scripts:
 - `run_2stages.sh`: runs two session

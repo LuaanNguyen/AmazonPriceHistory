@@ -10,6 +10,7 @@ import os
 load_dotenv()
 
 opeai_api_key = os.getenv("OPENAI_API_KEY")
+vllm_server_url = os.getenv("VLLM_SERVER_URL")
 
 openai_keys = [
     opeai_api_key
@@ -84,7 +85,7 @@ class API:
 
 class vllmAPI:
     def __init__(self,temperature = 0.0) -> None:
-        self.api_url = "http://scg005:8000/generate" # http://sg019:8000/generate if use 2 different terminals
+        self.api_url = vllm_server_url # http://sg019:8000/generate if use 2 different terminals
         self.t = temperature
 
     def post_http_request(self, prompt: str,
