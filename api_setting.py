@@ -53,6 +53,7 @@ class API:
                 reply = response.choices[0].message.content
                 if reply == '':
                     raise ValueError('EMPTY RESPONSE CONTENT')
+                
                 # After success request, return the key
                 self.key_queue.put(key)
                 return reply
@@ -61,8 +62,6 @@ class API:
                 if "quota" in e.message or "exceeded" in e.message or "balance" in e.message: # type: ignore
                     # Discard the old one and find a new key
                     errormsg=e
-                    with open('RanOutKeys.txt','a') as f:
-                        f.write(f'{key}\n')
                     key = self.key_queue.get()
                 else:
                     errormsg=e
