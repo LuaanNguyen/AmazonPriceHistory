@@ -53,7 +53,6 @@ class API:
                 reply = response.choices[0].message.content
                 if reply == '':
                     raise ValueError('EMPTY RESPONSE CONTENT')
-                
                 # After success request, return the key
                 self.key_queue.put(key)
                 return reply
@@ -62,6 +61,8 @@ class API:
                 if "quota" in e.message or "exceeded" in e.message or "balance" in e.message: # type: ignore
                     # Discard the old one and find a new key
                     errormsg=e
+                    with open('RanOutKeys.txt','a') as f:
+                        f.write(f'{key}\n')
                     key = self.key_queue.get()
                 else:
                     errormsg=e
@@ -84,7 +85,7 @@ class API:
 
 class vllmAPI:
     def __init__(self,temperature = 0.0) -> None:
-        self.api_url = vllm_server_url # http://sg019:8000/generate if use 2 different terminals
+        self.api_url = vllm_server_url
         self.t = temperature
 
     def post_http_request(self, prompt: str,

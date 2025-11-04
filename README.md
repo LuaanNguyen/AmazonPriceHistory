@@ -28,10 +28,10 @@ Experimental results show that OG-Narrator improves the buyer's deal rates from 
 # Benchmark Result
 To better visualize the benchmark results, we drew the following image using `plot_pic.ipynb`.
 
-![](benchmark_plot/performances_llms.png)
+![](assets/benchmark_plot/performances_llms.png)
 
-![](benchmark_plot/share_buyers.png)
+![](assets/benchmark_plot/share_buyers.png)
 
-![](benchmark_plot/share_sellers.png)
+![](assets/benchmark_plot/share_sellers.png)
 
-![](benchmark_plot/performances_OG-Narrator.png)
+![](assets/benchmark_plot/performances_OG-Narrator.png)

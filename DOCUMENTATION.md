@@ -16,7 +16,11 @@ We can deploy LLMs (e.g., Qwen2.5-7B, Mistral-7B, ChatGPT, etc.) using `vLLM` on
 interactive -p htc -t 2:00:00 --gres=gpu:a100:1
 ```
 
-Wait for `sg###` login prompt - indicates GPU node access ID 
+Wait for `sg###` login prompt - indicates GPU node access ID. Create a `.env` file and put your vLLM URL in this format: 
+
+``` env
+VLLM_SERVER_URL="http://sg###:8000/generate"
+```
 
 ### 2. Load environment
 
@@ -43,13 +47,13 @@ cd AmazonPriceHistory
 
 ### 5. Provide API keys (optional) 
 
-If you want to benchmark against `GPT-3.5` or `GPT-4`, create a `.env` file and add; 
+If you want to benchmark against `GPT-3.5` or `GPT-4`, add this line below to your `.env` file: 
 
 ``` .env
 OPENAI_API_KEY="YOUR KEY HERE"
 ```
 
-### 6. Start he vLLM server
+### 6. Start the vLLM server
 
 Use the supplied script to launch the model server. It accepts two arguments: The path to your HF model folder ( or model name if you installed it locally) and the number of GPUs.
 
@@ -100,3 +104,14 @@ python eval.py ./results
 ```
 
 It writes a CSV summary at `eval_results.csv` and saves plots of normalized profit distribution. 
+
+
+## Models Used in the Paper
+
+### Baseline (Buyer and Seller) 
+
+Each opens-ource model was tested twice: 
+- As _Buyer_ vs. _ChatGPT Seller_ 
+- As _Seller_ vs. _ChatGPT Buyer_
+
+![](assets/paper/models_used.png)
